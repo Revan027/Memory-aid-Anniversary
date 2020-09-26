@@ -1,3 +1,5 @@
+var in_page_home = true;  //boolean si la page est le home
+
 $(document).ready(function() {  
            
       $("body").on("touchmove","#mainConteneur",function(){
