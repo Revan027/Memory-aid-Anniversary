@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html lang="fr">
+      <head>
+            <!--
+            Customize this policy to fit your own app's needs. For more guidance, see:
+                  https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+            Some notes:
+                  * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+                  * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+                  * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                  * Enable inline JS: add 'unsafe-inline' to default-src
+            -->
+            
+            <meta name="format-detection" content="telephone=yes">
+            <meta name="msapplication-tap-highlight" content="no">
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+            <meta http-equiv="Content-Security-Policy" content=".." />
+            <link rel="stylesheet" type="text/css" href="css/index.css">
+            <link type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+            <link type="text/css" href="node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+            <link rel="stylesheet" type="text/css"  href="node_modules/pretty-checkbox/dist/pretty-checkbox.min.css" rel="stylesheet"> 
+
+            <title>Memory-aid Anniversary</title>
+      </head>
+      <body onload="onLoad()">
+
+            <!-- Block navigation -->   
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark"> 
+                  
+                  <a class="navbar-brand" href="#">  <img src="img/logo.png" alt="Logo" > Navigation</a>
+                        
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                  </button>
+
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                              <a class="nav-link" onclick="NavMenu('Calendar');"><i class="fa fa-home fa-lg"></i>&nbsp;Accueil <span class="sr-only">(current)</span></a>
+                        </li>
+                        
+                        <li class="nav-item">
+                              <a class="nav-link" onclick="NavMenu('Contact');"> <i class="fa fa-gift fa-lg" style="color:whitesmoke"></i>&nbsp;Gestion des contacts</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                              <a class="nav-link" onclick="NavMenu('Option');" > <i class="fa fa-cogs fa-lg" style="color:whitesmoke"></i>&nbsp;Options</a>
+                        </li>
+                  </ul>
+                  </div>
+            </nav>
+
+            <!-- conteneur modal  -->   
+            <div id='LoadModal'></div> 
+
+            <!-- conteneur template -->   
+            <div id='LoadTemplate' class="container-fluid"></div> 
+            
+            <!-- conteneur principale ou seront envoyé les templates -->   
+            <div id="mainConteneur" class="container-fluid" >
+       </div> 
+      
+        <!-- Footer -->       	
+        <div id="footer">
+            <div id="scrollDown">
+                  <img src="img/to_down.png"/>
+            </div>
+            
+            <div id="scrollUp">
+                  <img src="img/to_top.png"/>
+            </div>
+			         
+            <p class="version">Memory-aid Anniversary. Version 3.0</p>
+            <p class="signature">Développée par Freyss Morgan</p>
+        </div> 
+        <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>  
+        <script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>  
+        <script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>  
+        <script type="text/javascript" src="node_modules/mustache/mustache.min.js"></script>   
+        <script type="text/javascript" src="node_modules/moment/min/moment.min.js"></script>        
+        <script type="text/javascript" charset="utf-8" src="cordova.js"></script> 
+        <script type="text/javascript" src="js/lib/globalVariable.js"></script>
+        <script type="text/javascript" src="js/lib/Modal.js"></script>   
+        <script type="text/javascript" src="js/lib/Template.js"></script>     
+        <script type="text/javascript" src="js/lib/Tools.js"></script>
+        <script type="text/javascript" src="js/lib/Option.js"></script>  
+        <script type="text/javascript" src="js/lib/Calendar.js"></script>  
+        <script type="text/javascript" src="js/lib/Contact.js"></script>  
+        <script type="text/javascript" src="js/lib/linkToPlugin.js"></script>      
+        <script type="text/javascript">
+ 					/*********mise a jour de l'interface si l'applciation est mise en arrière plan*********/
+            function onResume() {
+
+                setTimeout(function() {
+                }, 0);
+
+            }
+          
+            function onLoad() {  				
+                  document.addEventListener("deviceready", onDeviceReady, false);
+            }
+                    
+            function onDeviceReady() {  //dès que apllication prête sur android
+        
+                  Initialize();
+        
+            }
+    
+
+							/*********fait apparaitre la fleche pour le scrolling *********/
+			$(document).ready(function() { 
+                       
+				 $( "#scrollDown" ).click(function() {
+					
+					$('html, body').animate( { scrollTop:$(document).height() }, 800 ,function(){
+									
+					});								
+				});
+					
+				$( "#scrollUp" ).click(function() {
+					
+					 scroll = $(window).scrollTop();
+				
+					$('html, body').animate( { scrollTop:0 }, 800 ,function(){
+
+					});
+					
+				});
+				
+				$(window).scroll(function () { //Fonction appel�e quand on descend la page		
+
+					var hauteur_visible = window.innerHeight;
+					var scroll = Math.round($(window).scrollTop());
+					var hauteur_non_visible = $(document).height();
+					
+					if(scroll+hauteur_visible>=hauteur_non_visible){
+						
+						$('#scrollDown').fadeOut();
+						$('#scrollUp').fadeIn(); 
+						
+					}else if(scroll === 0)	{
+						
+						$('#scrollDown').fadeIn();
+						$('#scrollUp').fadeOut(); 
+					}
+				});				
+			 });           
+		
+		/*function onPause() {
+                    alert('De retour ');
+            }*/
+        </script>
+        <script type="text/javascript" src="js/lib/gestionJSON.js"></script>  
+        <script type="text/javascript" src="js/lib/Navigation.js"></script> 
+        <script type="text/javascript" src="js/lib/reglage.js"></script> 
+    </body>   
+</html>

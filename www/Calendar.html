@@ -1,0 +1,61 @@
+ <script id="template" type="text/template">
+      <div id='container-fluid' style='padding-top:1.5em!important;text-align:center;'>
+            <div id='blockChangeView'>
+                  <div id='blockLeft'>Jour</div>
+                  <div id='blockRight' style=' background-color: #E6E6E6;'>Mois</div>
+            </div>
+            
+            <div id='libelleMois'><b>{{monthNames}} {{year}}</b></div>
+                  
+            <div id='blockChangeMonth'>
+                  <div id='blockLeftFleche'>
+                        <i class='fa fa-caret-left fa-lg' aria-hidden='true' ></i>
+                  </div>
+
+                  <div id='blockRightFleche'>
+                        <i class='fa fa-caret-right fa-lg' aria-hidden='true'></i>
+                  </div>
+            </div>
+
+            <div class='table-responsive-sm'>
+                  <table class='table'>
+                        <thead>
+                              <tr id='mois'>
+                                    <td>Lun</td>
+                                    <td>Mar</td>
+                                    <td>Mer</td>
+                                    <td>Jeu</td>
+                                    <td>Ven</td>
+                                    <td>Sam</td>
+                                    <td>Dim</td>
+                              </tr>
+                        </thead>
+                        <tbody>
+                              <tr id='afterDay'>
+                                    {{#previousDays}}
+                                          <td style='color:silver;'>
+                                                <div class='container'>
+                                                      <div class='row'>
+                                                            <div class='col-'>{{previousDay}}</div>
+                                                      </div>
+                                                </div>
+                                          </td>
+                                    {{/previousDays}}
+
+                                    {{{currentDays}}}
+
+                                    {{#followingDays}}
+                                          <td style='color:silver;'>
+                                                <div class='container'>
+                                                      <div class='row'>
+                                                            <div class='col-'>{{followingDay}}</div>
+                                                      </div>
+                                                </div>
+                                          </td>
+                                    {{/followingDays}}   
+                              </tr>                                                   
+                        </tbody>   
+                  </table>
+            </div> 
+      </div> 
+ </script>

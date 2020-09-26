@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.revan.memoryaidanniversary" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Memory_Aid_Anniversary</name>
+    <description>
+        A sample Apache Cordova application that responds to the deviceready event.
+    </description>
+    <author email="dev@cordova.apache.org" href="http://cordova.io">
+        Revan
+    </author>
+    <content src="index.html" />
+    <plugin name="cordova-plugin-whitelist" spec="1" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <preference name="AutoHideSplashScreen" value="true" />
+      <!-- <preference name="AndroidLaunchMode" value="singleTop" /> -->
+      <platform name="android">		
+            <allow-intent href="market:*" />	
+            <icon density="mdpi" src="res/icon/android/mdpi.png" />
+            <icon density="ldpi" src="res/icon/android/ldpi.png" />
+            <icon density="hdpi" src="res/icon/android/hdpi.png" />
+            <icon density="xhdpi" src="res/icon/android/xhdpi.png" />
+            <icon density="xxhdpi" src="res/icon/android/xxhdpi.png" />
+            <!-- icones pour splascreen -->
+            <splash density="port-hdpi" src="res/screen/android/splash-port-hdpi.png" />
+            <splash density="port-ldpi" src="res/screen/android/splash-port-ldpi.png" />
+            <splash density="port-mdpi" src="res/screen/android/splash-port-mdpi.png" />
+            <splash density="port-xhdpi" src="res/screen/android/splash-port-xhdpi.png" />
+            <!-- icone pour notif -->
+            <resource-file  src="res/icon/android/ldpi.bmp" target="app/src/main/res/drawable/ic_memory.bmp" />
+      </platform>
+      <platform name="ios">
+            <allow-intent href="itms:*" />
+            <allow-intent href="itms-apps:*" />
+      </platform>
+</widget>

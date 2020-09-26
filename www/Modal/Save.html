@@ -1,0 +1,31 @@
+<div class="card-header">
+      <button type="button" class="close" style='position: absolute !important;top:5px;right:10px;' data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+      </button>
+
+      <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+            <li class="nav-item">
+                  <a class="nav-link active" id="pills-save-tab" data-toggle="pill" href="#pills-save" role="tab" aria-controls="pills-save" aria-selected="true">Ajouter</a>
+            </li>
+
+            <li class="nav-item">
+                  <a class="nav-link" id="pills-data-tab" data-toggle="pill" href="#pills-data" role="tab" aria-controls="pills-data" aria-selected="false">Anniversaire(s)</a>
+            </li>
+      </ul>
+</div>
+
+<div class="card-body">
+      <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-save" role="tabpanel" aria-labelledby="pills-save-tab">
+                  <input class="form-control" maxlength="15" type="text" id="name" placeholder="Anniversaire de ?"><br>
+                  <input class="form-control"  maxlength="12" type="text" id="phone" placeholder="Numéro de téléphone ?">
+
+                  <div id='contact' class='m-3 contact'><i class='fa fa-user-circle-o' aria-hidden='true'></i> Voir vos contacts</div>
+                  
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                  <button type="button" class="btn btn-primary btn-save">Enregistrer</button>
+            </div>
+
+            <div class="tab-pane fade" id="pills-data" role="tabpanel" aria-labelledby="pills-data-tab"> </div>  
+      </div>
+</div>

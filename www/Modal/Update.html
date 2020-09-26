@@ -1,0 +1,29 @@
+<div class="card-header">
+      <button type="button" class="close" style='position: absolute !important;top:5px;right:10px;' data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+      </button>
+      
+      <ul class="nav nav-tabs card-header-tabs">
+            <li class="nav-item" id='Enregister'>
+                  <a class="nav-link active" href="#">Ajouter</a>
+            </li>
+
+            <li class="nav-item"  id='Anniversaire'>
+                  <a class="nav-link" href="#">Anniversaire(s)</a>
+            </li>
+      </ul>
+</div>
+
+<div class="card-body">
+      <div id="save">
+            <input class="form-control" maxlength="15" type="text" id="name" placeholder="Anniversaire de ?"><br>
+            <input class="form-control"  maxlength="12" type="text" id="phone" placeholder="Numéro de téléphone ?">
+
+            <div id='contact' class='m-3 contact'><i class='fa fa-user-circle-o' aria-hidden='true'></i> Voir vos contacts</div>
+            
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+            <button type="button" class="btn btn-primary btn-save">Enregistrer</button>
+      </div>  
+
+      <div id="data"></div>                      
+</div>
