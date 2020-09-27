@@ -1,29 +1,26 @@
 <div class="card-header">
-      <button type="button" class="close" style='position: absolute !important;top:5px;right:10px;' data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+      <button type="button" class="close" style='position: absolute !important;top:-5px;right:10px;' data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
       </button>
-      
-      <ul class="nav nav-tabs card-header-tabs">
-            <li class="nav-item" id='Enregister'>
-                  <a class="nav-link active" href="#">Ajouter</a>
-            </li>
 
-            <li class="nav-item"  id='Anniversaire'>
-                  <a class="nav-link" href="#">Anniversaire(s)</a>
-            </li>
-      </ul>
+      <h5>Modifiez votre contact</h5>
 </div>
 
 <div class="card-body">
-      <div id="save">
-            <input class="form-control" maxlength="15" type="text" id="name" placeholder="Anniversaire de ?"><br>
-            <input class="form-control"  maxlength="12" type="text" id="phone" placeholder="Numéro de téléphone ?">
+      <div class="form-group">
+          <span><label for="new_name"><i class='fa fa-user-circle-o' aria-hidden='true'></i> Nom</label></span>
+          <input type="text" maxlength="15" class="form-control" id="name" placeholder="....">
+      </div>
 
-            <div id='contact' class='m-3 contact'><i class='fa fa-user-circle-o' aria-hidden='true'></i> Voir vos contacts</div>
-            
+      <div class="form-group">
+          <span><label for="new_num_tel"><i class='fa fa-mobile fa-2x' aria-hidden='true'></i>  Numéro de téléphone</label></span>
+          <input type="text" maxlength="12" class="form-control" id="phone" placeholder="+33 ou 06, 07">
+      </div> 
+
+      <div class='contact mt-3'><i class='fa fa-user-circle-o ' aria-hidden='true'></i> Voir vos contacts</div>
+
+      <div class="text-right">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-            <button type="button" class="btn btn-primary btn-save">Enregistrer</button>
-      </div>  
-
-      <div id="data"></div>                      
+            <button type="button" class="btn btn-primary">Enregistrer</button>
+      </div>
 </div>

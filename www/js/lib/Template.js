@@ -54,6 +54,7 @@ function Load(page,param = null){
 
             case 'Update':
                   $("#Modal .card").load("./Modal/Update.html", function(data) { 
+                        InitUpdateModal(param);
                         $('#Modal').modal('show');
                   });               
                   break; 

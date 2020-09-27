@@ -41,3 +41,11 @@ function InitSaveModal() {
       }
       $( "#pills-data").append(content);
 }
+
+/**
+ * Init du modal de modification avec les informations d'un contact
+ */
+function InitUpdateModal(detailUser) {
+    $("#name").val(detailUser.name);
+    $("#phone").val(detailUser.phone);
+}

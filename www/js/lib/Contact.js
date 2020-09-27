@@ -9,9 +9,16 @@ $(document).ready(function() {
             AddUser();
       });
 
-      $("body").on("click",".card .fa-pencil",function(event){    //demande de modification d'une personne
+      $("body").on("click",".card .fa-pencil",function(event){    //demande de modification d'une personne          
             event.stopPropagation();
-            Load("Update");
+            var id = $(this).prev().attr("id");
+            var detailUser = null;
+
+            for(user of dataContact.user) {
+                 if(user.id == id) detailUser = user;
+            }      
+
+            Load("Update",detailUser);
       });
       
       $("body").on("click",".card .fa-trash",async function(event){     //demande de suppression d'une personne
@@ -53,7 +60,7 @@ $(document).ready(function() {
             Load("Save");
       });
 
-      $("body").on("click",".contact",function(){     //demande de voir les contacts
+      $("body").on("click",".contact",function(){     //demande de voir les numéros de téléphone
             var success = function(message) {            
                  $("#phone").val(message)
             }; 
