@@ -1,4 +1,6 @@
-/******** controle formulaire pour le nom et le numero de téléphone ***********/
+/**
+ * Controle formulaire pour le nom et le numero de téléphone 
+ */
 function ControlUserForm(name,phone){
       // var regex = /^[a-zâäàéèùêëîïôöçñ]/;
       var regex = /([0-9"'@!?,.;:^$§%*µ$£¤=\}\{\)\(\]\#~&[+*\/\\|]+)/;//cherchera avec match si il trouve l'un de ces caractères
@@ -14,8 +16,9 @@ function ControlUserForm(name,phone){
       return "Ok";
 }
 
-
-/******** controle formulaire des options ***********/
+/**
+ * Controle formulaire des options
+ */
 function ControlOptionForm(text,hour){	
       var regex = /([@<>$§%*µ$£¤=\}\{\)\(\]\#~&[+*\/\\|]+)/; 
       var regex2 = /(\s+nom\s+)|([.|,|;|\s+]{1}nom[.|,|;|\s]{1})|(\s+nom\s*)$/; //mot non sépéré par des espacements ou précédé d'un caractere ou d'un espacement et en fin de chaine avec ou sans espacement à la fin

@@ -69,21 +69,3 @@ function Load(page,param = null){
             default: break;
       }  
 }
-
-/**
- *  Lien pour l'initialisation de l'application
- */
-function Initialize(){
-      Load("Calendar");
-      Load("Modal"); 
-
-      var success = function(message) { 
-          alert(message);
-      };
-  
-      var failure = function(message) {
-          
-          alert("Erreur : " + message);
-      };  
-      navigator.plugins.alarm.init("",success, failure);  
-}

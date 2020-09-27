@@ -106,69 +106,7 @@
         <script type="text/javascript" src="js/lib/Calendar.js"></script>  
         <script type="text/javascript" src="js/lib/Contact.js"></script>  
         <script type="text/javascript" src="js/lib/linkToPlugin.js"></script>      
-        <script type="text/javascript">
- 					/*********mise a jour de l'interface si l'applciation est mise en arrière plan*********/
-            function onResume() {
-
-                setTimeout(function() {
-                }, 0);
-
-            }
-          
-            function onLoad() {  				
-                  document.addEventListener("deviceready", onDeviceReady, false);
-            }
-                    
-            function onDeviceReady() {  //dès que apllication prête sur android
-        
-                  Initialize();
-        
-            }
-    
-
-							/*********fait apparaitre la fleche pour le scrolling *********/
-			$(document).ready(function() { 
-                       
-				 $( "#scrollDown" ).click(function() {
-					
-					$('html, body').animate( { scrollTop:$(document).height() }, 800 ,function(){
-									
-					});								
-				});
-					
-				$( "#scrollUp" ).click(function() {
-					
-					 scroll = $(window).scrollTop();
-				
-					$('html, body').animate( { scrollTop:0 }, 800 ,function(){
-
-					});
-					
-				});
-				
-				$(window).scroll(function () { //Fonction appel�e quand on descend la page		
-
-					var hauteur_visible = window.innerHeight;
-					var scroll = Math.round($(window).scrollTop());
-					var hauteur_non_visible = $(document).height();
-					
-					if(scroll+hauteur_visible>=hauteur_non_visible){
-						
-						$('#scrollDown').fadeOut();
-						$('#scrollUp').fadeIn(); 
-						
-					}else if(scroll === 0)	{
-						
-						$('#scrollDown').fadeIn();
-						$('#scrollUp').fadeOut(); 
-					}
-				});				
-			 });           
-		
-		/*function onPause() {
-                    alert('De retour ');
-            }*/
-        </script>
+        <script type="text/javascript" src="js/lib/InitAppli.js"></script>                          
         <script type="text/javascript" src="js/lib/gestionJSON.js"></script>  
         <script type="text/javascript" src="js/lib/Navigation.js"></script> 
         <script type="text/javascript" src="js/lib/reglage.js"></script> 
