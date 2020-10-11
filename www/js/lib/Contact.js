@@ -19,6 +19,10 @@ $(document).ready(function() {
             }      
 
             Load("Update",detailUser);
+
+            $("body").on("click",".card .btn-save",function(event){ 
+                  UpdateUser(id);
+            });
       });
       
       $("body").on("click",".card .fa-trash",async function(event){     //demande de suppression d'une personne
@@ -107,6 +111,26 @@ function DeleteUser(id){
       location.reload();
 }
 
+function UpdateUser(id){
+      var name = $("#name").val();
+      var phone = $("#phone").val();
+      phone = phone.replace(/ /g,""); //permet de remplacer tous les espaces (et uniquement les espaces)
+      phone = phone.replace(/\s/g,""); //permet de rempalcer tous les caractères 'blanc' (ceux que j'ai cités précédemment)
+      var correct = ControlUserForm(name,phone);
+
+      if(correct != "Ok")  alert(retour); 
+      else{
+            var success = function(message) {             
+                  alert(message); 
+            }; 
+            var failure = function(message) {             
+                  alert(message);
+            };        
+            navigator.plugins.alarm.updateUser(id,name,phone,success,failure);  
+            location.reload();
+     }
+}
+
 function UpdateUserState(element){
       var success = function(message) {	
           alert(message);     
@@ -149,7 +173,6 @@ async function GetUsers(){
 function ResetContacts(){
       dataContact.user = [];
 }
-
 
 /*********** Init de la liste des contacts *************/  
 async function InitContacts(){

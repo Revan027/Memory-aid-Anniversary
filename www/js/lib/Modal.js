@@ -11,6 +11,30 @@ function InitConfirmModal(type){
 }
 
 /**
+ * Init du modal pour ajouter un anniversaire
+ */
+function InitSaveModal() {
+      let content = "";
+
+      for(let item of currentAnniversary){
+            if(item.date == dateChoice)   content += "<i class='fa fa-user-circle-o' aria-hidden='true'></i> "+item.name+" </br>";               
+      }
+
+      if(content === "") content = "<h6 class='card-title'> <i class='fa fa-exclamation-triangle fa' aria-hidden='true'></i> Aucun anniversaire trouvé </h6>";
+      else  $('#pills-data-tab').tab('show');
+      
+      $( "#pills-data").append(content);
+}
+
+/**
+ * Init du modal de modification avec les informations d'un contact
+ */
+function InitUpdateModal(detailUser) {
+    $("#name").val(detailUser.name);
+    $("#phone").val(detailUser.phone);
+}
+
+/**
  * Attente d'une confirmation
  */
 function Confirm() {
@@ -25,27 +49,3 @@ function Confirm() {
           })
       });
   }
-
-/**
- * Init du modal pour ajouter un anniversaire
- */
-function InitSaveModal() {
-      let content = "";
-
-      for(let item of currentAnniversary){
-            if(item.date == dateChoice)   content += "<i class='fa fa-user-circle-o' aria-hidden='true'></i> "+item.name+" </br>";               
-      }
-
-      if(content === ""){
-            content = "<h6 class='card-title'> <i class='fa fa-exclamation-triangle fa' aria-hidden='true'></i> Aucun anniversaire trouvé </h6>";
-      }
-      $( "#pills-data").append(content);
-}
-
-/**
- * Init du modal de modification avec les informations d'un contact
- */
-function InitUpdateModal(detailUser) {
-    $("#name").val(detailUser.name);
-    $("#phone").val(detailUser.phone);
-}
