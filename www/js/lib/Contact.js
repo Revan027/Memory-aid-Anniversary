@@ -60,7 +60,7 @@ $(document).ready(function() {
 
       $("body").on("click","tbody .dateChoice",function(){  //clique sur une cellule du calendrier
             dateChoice = $(this).attr("data");
-                 
+                
             Load("Save");
       });
 
@@ -84,7 +84,7 @@ function AddUser(){
             tabId.push($(this).attr('id'));
       }); */  
       var correct = ControlUserForm(name,phone);
-
+    
       if(correct != "Ok"){         
             alert(retour);   
 
@@ -94,7 +94,7 @@ function AddUser(){
             }; 
             var failure = function(message) {             
                   alert(message);
-            };        
+            };      
             navigator.plugins.alarm.addUser(dateChoice,name,phone,success,failure);  
             location.reload();
     }
