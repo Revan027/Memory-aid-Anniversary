@@ -6,7 +6,7 @@ window.dateChoice;      //date d'une cellule
 
 $(document).ready(function() {
       $("body").on("click","#save .btn-save",function(){    //demande d'ajout d'une personne
-            AddUser();
+           AddUser();
       });
 
       $("body").on("click",".card .fa-pencil",function(event){    //demande de modification d'une personne          
@@ -39,7 +39,7 @@ $(document).ready(function() {
       $("body").on("click"," #btnDeleteContact",async function(event){  //demande de suppression de plusieurs personnes   
             var tabId = [];
 
-            $('input[type=checkbox]').each(function (i) {
+            $('.checkbox-delete').each(function (i) {
                  if($(this).is(':checked')) tabId.push($(this).attr("id"));        
             });
 
@@ -80,9 +80,7 @@ function AddUser(){
       var phone = $("#phone").val();
       phone = phone.replace(/ /g,""); //permet de remplacer tous les espaces (et uniquement les espaces)
       phone = phone.replace(/\s/g,""); //permet de rempalcer tous les caractères 'blanc' (ceux que j'ai cités précédemment)
-     /* $("input[type='checkbox']:checked").each(function(index) {
-            tabId.push($(this).attr('id'));
-      }); */  
+     
       var correct = ControlUserForm(name,phone);
     
       if(correct != "Ok"){         
