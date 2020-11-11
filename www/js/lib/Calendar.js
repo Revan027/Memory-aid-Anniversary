@@ -131,7 +131,7 @@ function InitCurrentDate(){
                                     '<div class="col-">'+jour+'</div>'+
                               '</div>'+  
                               '<div class="row">'+
-                                    '<div class="col-">'+gift+' '+ exposant +'</div>'+
+                                    '<div class="countAnniv col-">'+gift+' '+ exposant +'</div>'+
                               '</div>'+                        
                         '</div>';
 

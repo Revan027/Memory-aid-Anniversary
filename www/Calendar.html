@@ -1,20 +1,11 @@
  <script id="template" type="text/template">
-      <div id='container-fluid' style='padding-top:1.5em!important;text-align:center;'>
-            <div id='blockChangeView'>
-                  <div id='blockLeft'>Jour</div>
-                  <div id='blockRight' style=' background-color: #E6E6E6;'>Mois</div>
-            </div>
-            
-            <div id='libelleMois'><b>{{monthNames}} {{year}}</b></div>
-                  
-            <div id='blockChangeMonth'>
-                  <div id='blockLeftFleche'>
-                        <i class='fa fa-caret-left fa-lg' aria-hidden='true' ></i>
-                  </div>
-
-                  <div id='blockRightFleche'>
-                        <i class='fa fa-caret-right fa-lg' aria-hidden='true'></i>
-                  </div>
+      <div id='container-fluid' style='text-align:center;'>
+            <div class="d-flex justify-content-center m-2">
+                  <i id="blockLeftFleche" class='fa fa-caret-left fa-3x pr-3' aria-hidden='true' ></i>
+                        
+                  <div id='libelleMois'><b>{{monthNames}} {{year}}</b></div>
+                        
+                  <i id="blockRightFleche" class='fa fa-caret-right fa-3x pl-3' aria-hidden='true'></i>
             </div>
 
             <div class='table-responsive-sm'>

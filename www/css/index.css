@@ -49,10 +49,9 @@ button{
     height:35px;
 }
 
-#libelleMois{
-    
-    display:inline;
-    font-size:14px;
+
+#libelleMois{  
+    align-self: center;
 }
 
 #blockLeft{ 
@@ -80,33 +79,6 @@ button{
     background-color:#F2F2F2;   
 	font-size: 14px;
 }
-
-#blockRightFleche{  
-    
-    display: inline;
-    padding-top:0.19em;
-    padding-bottom:0.3em;
-    padding-right:1em;
-    padding-left:1em;
-    border: 1px solid #D3D3D3;
-    background-color:#F2F2F2; 
-
-}
-
-#blockLeftFleche{ 
-    
-    display: inline;
-    padding-top:0.2em;
-    padding-bottom:0.3em;
-    padding-right:1em;
-    padding-left:1em;
-    border: 1px solid #D3D3D3; 
-    background-color: #F2F2F2; 
-    border-right: 0px solid #D8D8D8;
-}
-
-
-
 
 
 /******************* nav ************************/
@@ -250,6 +222,11 @@ tr:last-child td{
 .hidden-btn{
       display: none!important;
 }
+
+.countAnniv{
+      font-size: 12px;
+}
+
 
 /************* reglage ***************/
 

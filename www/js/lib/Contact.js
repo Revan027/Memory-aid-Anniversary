@@ -9,6 +9,10 @@ $(document).ready(function() {
            AddUser();
       });
 
+      $("body").on("click",".card .checkbox-delete",function(event){          
+            event.stopPropagation();
+      });
+
       $("body").on("click",".card .fa-pencil",function(event){    //demande de modification d'une personne          
             event.stopPropagation();
             var id = $(this).prev().attr("id");
