@@ -30,7 +30,7 @@ function Load(page,param = null){
 
             case 'Option':
                   $("#mainConteneur").load("./Option.html", function(data) {//chargement d'une page html vers une div
-                        GetOptions();
+                        option.callPlugin.getOptions();
                    }); 
                   break;
 
