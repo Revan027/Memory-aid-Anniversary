@@ -5,6 +5,34 @@ var dataContact = {
 window.dateChoice;      //date d'une cellule
 
 $(document).ready(function() {
+      $("body").on("click",".pageIndex ",function(event){          
+            let index = parseInt($(this).text());
+            pagination.offset = (index -1) * pagination.limit;
+            pagination.currentPage = index;
+
+            ResetContacts();
+            InitContacts();
+
+      });
+
+      $("body").on("click",".nextPage ",function(event){    
+            pagination.getOtherPages("NEXT");      
+            pagination.currentPage++;
+            pagination.offset +=  pagination.limit;
+
+            ResetContacts();
+            InitContacts();
+      });
+
+      $("body").on("click",".prev ",function(event){    
+            pagination.getOtherPages("PREV");      
+            pagination.currentPage--;
+            pagination.offset -=  pagination.limit;
+
+            ResetContacts();
+            InitContacts();
+      });
+
       $("body").on("click","#save .btn-save",function(){    //demande d'ajout d'une personne
            AddUser();
       });
@@ -78,6 +106,8 @@ $(document).ready(function() {
             navigator.plugins.alarm.phoneContacts("",success, failure);
       });
 });
+
+
 
 function AddUser(){
       var name = $("#name").val();
@@ -167,7 +197,7 @@ async function GetUsers(){
             var failure = function(message) {
                   alert("Erreur : " + message);
             };  
-            navigator.plugins.alarm.getUsers("",success, failure);
+            navigator.plugins.alarm.getUsers(pagination.limit, pagination.offset,success, failure);
       });
 }
 
@@ -177,7 +207,8 @@ function ResetContacts(){
 }
 
 /*********** Init de la liste des contacts *************/  
-async function InitContacts(){
+async function InitContacts(){     
       await GetUsers();
       Template(dataContact);
+      await pagination.init();
 }     
