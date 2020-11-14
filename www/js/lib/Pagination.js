@@ -5,7 +5,7 @@ var pagination = {
       currentPage:1,
       lastPage: 0,
       firstPage: 0,
-      otherPages: [],
+      pages: [],
       otherPagesLimit:4,
      
       getUsersNbr: async function(){  
@@ -23,45 +23,52 @@ var pagination = {
       },
       getFirstPage: function() {          
             this.firstPage = 1;
+            this.pages.unshift(this.firstPage);
       },
       getLastPage: function() {   
             if(this.nbrResult > 1)  {
                   this.lastPage = Math.trunc(this.nbrResult / this.limit);
 
                   if(this.nbrResult % this.limit > 1)  this.lastPage++;
+
+                  this.pages.push(this.lastPage);
             }              
       },
-      getOtherPages: function(direction) {  
-            this.otherPages = [];
+      navigation: function(direction = "") {  
+            this.pages = [];
 
-            if(direction === "NEXT"){
-                  for(let i = 1; i <= this.otherPagesLimit; i++)   {
-                        let index = this.currentPage + i;
-                        this.otherPages.push(index);   
+            this.getFirstPage();  
+                 
+            //todo : verification première et dernière page, recalculer le otherPagesLimit si le nombre de resultat < à 4, habillage du rendu
+            if(direction === "PREV"){
+                  for(let i = this.otherPagesLimit; i >= 1; i--)   {
+                        let index = this.currentPage - i;
+                        this.pages.push(index);   
                   }   
             }
             else
-                  for(let i = this.otherPagesLimit; i >= 1; i--)   {
-                        let index = this.currentPage - i;
-                        this.otherPages.push(index);   
+                  for(let i = 1; i <= this.otherPagesLimit; i++)   {
+                        let index = this.currentPage + i;
+                        this.pages.push(index);   
                   }   
+            this.getLastPage();                     
       },    
       render: function(){  
-            $(".pagination").append("<div class='pageIndex p-3'>"+this.firstPage+"</div>");
+            for(let i = 0; i < this.pages.length; i++)   {
+                  let classCurentPage ="";
 
-            for(let i = 0; i < this.otherPages.length; i++)   {
-                  $(".pagination").append("<div class='pageIndex p-3'>"+this.otherPages[i]+"</div>");
+                  if(this.currentPage == (this.pages[i])) classCurentPage = 'text-info';
+
+                  $(".pagination").append("<div class='pageIndex p-3 "+classCurentPage+"'>"+this.pages[i]+"</div>");
             }   
-
-            $(".pagination").append("<div class='pageIndex p-3'>"+this.lastPage+"</div>");
       },
       init: async function(){            
             await this.getUsersNbr().then((value) => {
                  this.nbrResult = value;
-            });       
-            this.getFirstPage();  
-            this.getLastPage();
-            if(this.currentPage == 1) this.getOtherPages("NEXT");
+            });   
+
+            if(this.currentPage == 1)  this.navigation("NEXT"); 
+                           
             this.render();
       }   
 }   
