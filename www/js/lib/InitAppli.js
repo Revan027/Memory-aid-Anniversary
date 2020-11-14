@@ -17,7 +17,7 @@ function Initialize(){
 }
 
 /**
-* Mise a jour de l'interface si l'applciation est mise en arrière plan
+* Mise a jour de l'interface si l'application est mise en arrière plan
 */
 function onResume() {
       setTimeout(function() { }, 0);             
