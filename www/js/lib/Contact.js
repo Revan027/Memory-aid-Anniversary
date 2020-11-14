@@ -16,7 +16,7 @@ $(document).ready(function() {
       });
 
       $("body").on("click",".nextPage ",function(event){    
-            pagination.getOtherPages("NEXT");      
+            pagination.navigation("NEXT");      
             pagination.currentPage++;
             pagination.offset +=  pagination.limit;
 
@@ -25,7 +25,7 @@ $(document).ready(function() {
       });
 
       $("body").on("click",".prev ",function(event){    
-            pagination.getOtherPages("PREV");      
+            pagination.navigation("PREV");      
             pagination.currentPage--;
             pagination.offset -=  pagination.limit;
 
