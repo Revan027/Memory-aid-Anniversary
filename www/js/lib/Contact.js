@@ -1,34 +1,28 @@
 // objet javascript contenant les données à afficher
 var dataContact = {
-      user : []/*,
-      pagination: Load(Pagination)*/
+      user : []
 };
 window.dateChoice;      //date d'une cellule
 
 $(document).ready(function() {
       $("body").on("click",".pageIndex ",function(event){          
             let index = parseInt($(this).text());
-            pagination.offset = (index -1) * pagination.limit;
-            pagination.currentPage = index;
-
+            pagination.navigation("",index);   
+          
             ResetContacts();
             InitContacts();
 
       });
 
-      $("body").on("click",".nextPage ",function(event){    
+      $("body").on("click",".nextPage",function(event){    
             pagination.navigation("NEXT");      
-            pagination.currentPage++;
-            pagination.offset +=  pagination.limit;
 
             ResetContacts();
             InitContacts();
       });
 
       $("body").on("click",".prev ",function(event){    
-            pagination.navigation("PREV");      
-            pagination.currentPage--;
-            pagination.offset -=  pagination.limit;
+            pagination.navigation("PREV");                
 
             ResetContacts();
             InitContacts();
@@ -210,5 +204,5 @@ async function InitContacts(){
       await GetUsers();
       await LoadPartial("Pagination");
       Template(dataContact, partials);
-      await pagination.init();
+      await pagination.create();
 }     
