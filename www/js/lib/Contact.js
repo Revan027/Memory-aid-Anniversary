@@ -1,6 +1,7 @@
 // objet javascript contenant les données à afficher
 var dataContact = {
-      user : [],
+      user : []/*,
+      pagination: Load(Pagination)*/
 };
 window.dateChoice;      //date d'une cellule
 
@@ -201,14 +202,13 @@ async function GetUsers(){
       });
 }
 
-/*********** Reset des variables *************/  
 function ResetContacts(){
       dataContact.user = [];
 }
 
-/*********** Init de la liste des contacts *************/  
 async function InitContacts(){     
       await GetUsers();
-      Template(dataContact);
+      await LoadPartial("Pagination");
+      Template(dataContact, partials);
       await pagination.init();
 }     

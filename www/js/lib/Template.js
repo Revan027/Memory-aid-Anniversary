@@ -1,13 +1,17 @@
+var partials = {
+      pagination:""
+};
+
 /**
  * Gestion des templates
  * @param {*} data 
  */
-function Template(data){
+function Template(data, partials = ""){
       // récupération du template
       var template = $('#template').html();
 
       // génération du HTML
-      var rendered = Mustache.render(template, data);
+      var rendered = Mustache.render(template, data, partials);
   
       // Insertion du résultat dans la page HTML
       $('#mainConteneur').html(rendered);
@@ -40,6 +44,10 @@ function Load(page,param = null){
                         InitContacts();             
                   }); 
                   break;
+                 
+            case 'Pagination':
+                  $("#LoadTemplate").load("./Pagination.html", function(data) { });               
+                  break; 
 
             case 'Modal':
                   $("#LoadModal").load("./Modal/Modal.html", function(data) { });               
@@ -69,4 +77,22 @@ function Load(page,param = null){
 
             default: break;
       }  
+}
+
+/**
+ * Chargement des sous templates
+ * @param {*} page 
+ * @param {*} param 
+ */
+async function LoadPartial(page, param = null){
+      switch (page) {
+
+            case "Pagination":
+                  await $.get("pagination.html", function(data) {
+                        partials.pagination = data;
+                  }, "html")  
+            break;
+
+            default: break;
+      }
 }
