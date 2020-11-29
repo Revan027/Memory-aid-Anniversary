@@ -66,6 +66,6 @@ var option = {
             }
       },    
 }
-$( document ).ready(function() {
-     option.event.init();  
-});
+jQuery(function() { 
+      option.event.init();  
+})

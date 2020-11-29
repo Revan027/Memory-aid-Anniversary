@@ -7,7 +7,7 @@ window.dateChoice;      //date d'une cellule
 $(document).ready(function() {
       $("body").on("click",".pageIndex ",function(event){          
             let index = parseInt($(this).text());
-            pagination.navigation("",index);   
+            pagination.advancement("",index);   
           
             ResetContacts();
             InitContacts();
@@ -15,14 +15,14 @@ $(document).ready(function() {
       });
 
       $("body").on("click",".nextPage",function(event){    
-            pagination.navigation("NEXT");      
+            pagination.advancement("NEXT");      
 
             ResetContacts();
             InitContacts();
       });
 
       $("body").on("click",".prev ",function(event){    
-            pagination.navigation("PREV");                
+            pagination.advancement("PREV");                
 
             ResetContacts();
             InitContacts();
