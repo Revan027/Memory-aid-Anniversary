@@ -2,33 +2,24 @@ var pagination = {
       nbrResult: 0,
       offset: 0,
       limit: 10,  
-      currentPage:0,
+      currentPage: 0,
       lastPage: 0,
       firstPage: 1,
       pages: [],
-      startPageLimit:0,
-      pageLimit:4,
+      startPageLimit: 0,
+      pageLimit: 4,
 
-      init: function(){   
-            this.startPageLimit = this.firstPage + 1;
-
-            if( this.lastPage > 0)  {
-                  for(let i = 0; i < this.pageLimit; i++){
-                        this.pages[i] =  this.startPageLimit + i;
-                  }
-            }      
-      },
       create: async function(){            
             await this.getUsersNbr().then((value) => {
                  this.nbrResult = value;
             });   
 
+            if(this.nbrResult < this.limit) return 0;
+
             if(this.currentPage == 0){  
-                  this.getLastPage();                   
-                  this.init(); 
-                  this.addFirstPage();   
-                  this.addLastPage();
-                  this.currentPage++;   
+                  this.initLastPage(); 
+                  this.initLimitPage();       
+                  this.createPages();              
             }                           
             this.render();
       },     
@@ -36,7 +27,7 @@ var pagination = {
             return new Promise(function(resolve, reject)  {                 
                   var success = function(message) {                
                         let nbrResult = message;
-                        nbrResult = 63;
+                        nbrResult = 184;
                         resolve(nbrResult);   
                   };
                   var failure = function(message) {
@@ -52,13 +43,13 @@ var pagination = {
             }else if(direction === "NEXT" && this.currentPage < this.lastPage){
                   this.currentPage++;
                   this.offset += this.limit;
-            }else {
+            }else if(index != 0){
                   this.offset = (index -1) * this.limit;
                   this.currentPage = index;
             }           
-            this.setOtherPagesLimit();           
+            this.createPages();    
       },   
-      setOtherPagesLimit: function() {          
+      createPages: function() {          
             if(this.currentPage < this.startPageLimit){          
                   if(this.currentPage == 1)     this.startPageLimit = this.currentPage + 1;
 
@@ -67,13 +58,13 @@ var pagination = {
                   if(this.currentPage == this.lastPage)    this.startPageLimit = this.currentPage - this.pageLimit;
                   
                   else   this.startPageLimit =  this.currentPage;                 
-            }           
+            }else if(this.currentPage == 0)    this.startPageLimit = this.firstPage + 1;     
             this.pages = [];
             let j = 0;
-          
+        
             for(let i = 0; i < this.pageLimit; i++){    
                   let page = this.startPageLimit+i;  
-
+ 
                   if(page < this.lastPage && page > this.firstPage) {
                         this.pages[j] = page;  
                         j++;  
@@ -86,16 +77,19 @@ var pagination = {
             this.pages.unshift(this.firstPage);          
       },
       addLastPage: function() {   
-            if(this.lastPage > 0 ) this.pages.push(this.lastPage);                   
+            this.pages.push(this.lastPage);                   
       },   
-      getLastPage: function() {   
-            if(this.nbrResult > 1)  {
-                  this.lastPage = Math.trunc(this.nbrResult / this.limit);
+      initLastPage: function() {   
+            this.lastPage = Math.trunc(this.nbrResult / this.limit);
 
-                  if(this.lastPage > 0 && this.nbrResult % this.limit > 1)  this.lastPage++;
-            }              
+            if(this.lastPage > 0 && this.nbrResult % this.limit > 1)  this.lastPage++;         
+      },   
+      initLimitPage: function() {   
+           if(this.lastPage < this.pageLimit)    this.pageLimit = this.lastPage;
       },   
       render: function(){  
+            $(".pagination").append("<div class='prev'>prev</div>");
+            
             for(let i = 0; i < this.pages.length; i++)   {
                   let classCurentPage ="";
 
@@ -103,5 +97,6 @@ var pagination = {
 
                   $(".pagination").append("<div class='pageIndex p-3 "+classCurentPage+"'>"+this.pages[i]+"</div>");              
             }   
+            $(".pagination").append("<div class='nextPage'>next</div>");           
       },    
 }   
