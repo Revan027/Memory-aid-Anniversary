@@ -235,9 +235,15 @@ tr:last-child td{
 	font-size:12px!important;
 }
 
+/************* PAGINATION ***************/
+.next, .prev{
+      vertical-align: middle;
+}
 
-
-
+.pageIndex{
+      color: white;
+      background-color: #343a40;
+}
 
 /************* icone ***************/
 [class*="fa fa-angle-double-down"] {

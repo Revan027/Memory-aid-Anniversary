@@ -14,7 +14,7 @@ $(document).ready(function() {
 
       });
 
-      $("body").on("click",".nextPage",function(event){    
+      $("body").on("click",".next",function(event){    
             pagination.advancement("NEXT");      
 
             ResetContacts();

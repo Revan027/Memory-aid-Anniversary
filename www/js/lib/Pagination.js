@@ -89,15 +89,15 @@ var pagination = {
            if(this.lastPage < this.pageLimit)    this.pageLimit = this.lastPage;
       },   
       render: function(){  
-            $(".pagination").append("<div class='prev'>prev</div>");
+            $(".pagination").append("<div class='col prev align-self-center'><i class='fa fa-angle-double-left fa-2x'></i></div>");
             
             for(let i = 0; i < this.pages.length; i++)   {
                   let classCurentPage ="";
 
                   if(this.currentPage == this.pages[i]) classCurentPage = 'text-info';
 
-                  $(".pagination").append("<div class='pageIndex p-3 "+classCurentPage+"'>"+this.pages[i]+"</div>");              
+                  $(".pagination").append("<div class='col pageIndex p-1 m-2 text-center "+classCurentPage+"'>"+this.pages[i]+"</div>");              
             }   
-            $(".pagination").append("<div class='nextPage'>next</div>");           
+            $(".pagination").append("<div class='col next align-self-center'><i class='fa fa-angle-double-right fa-2x'></i></div>");           
       },    
 }   

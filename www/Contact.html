@@ -36,10 +36,12 @@
             {{/user}}
              
             <div class='container'> 
+                  <div class='row mx-auto w-100'>
+                        {{>pagination}} 
+                  </div>
                   <div class='row'>
-                        <div class='col text-left'>
-                              <button type='button' style='display:inline-block;' class='btn btn-primary' id="btnDeleteContact">Supprimer</button>
-                              {{>pagination}}                             
+                        <div class='col'>
+                              <button type='button' style='display:inline-block;' class='btn btn-primary' id="btnDeleteContact">Supprimer</button>                           
                         </div>
                   </div>
             </div>  
