@@ -19,7 +19,8 @@ var pagination = {
             if(this.currentPage == 0){  
                   this.initLastPage(); 
                   this.initLimitPage();       
-                  this.createPages();              
+                  this.createPages();  
+                  this.currentPage++;            
             }                           
             this.render();
       },     
@@ -93,7 +94,7 @@ var pagination = {
             for(let i = 0; i < this.pages.length; i++)   {
                   let classCurentPage ="";
 
-                  if(this.currentPage == (this.pages[i])) classCurentPage = 'text-info';
+                  if(this.currentPage == this.pages[i]) classCurentPage = 'text-info';
 
                   $(".pagination").append("<div class='pageIndex p-3 "+classCurentPage+"'>"+this.pages[i]+"</div>");              
             }   
