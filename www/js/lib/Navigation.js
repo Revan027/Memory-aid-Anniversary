@@ -2,15 +2,15 @@ var in_page_home = true;  //boolean si la page est le home
 
 $(document).ready(function() {  
            
-      $("body").on("touchmove","#mainConteneur",function(){
+      $("body").on("touchmove","#calendar",function(){
             Swipe(this,1);
       });
 
-      $("body").on("touchstart","#mainConteneur",function(){ 
+      $("body").on("touchstart","#calendar",function(){ 
             Swipe(this,2);
       });
 
-      $("body").on("touchend","#mainConteneur",function(){ 
+      $("body").on("touchend","#calendar",function(){ 
             Swipe(this,3);
       });
 
